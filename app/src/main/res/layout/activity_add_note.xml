@@ -137,4 +137,30 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
         tools:ignore="OnClick" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:hint="Email de destination : "></TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mail_edit_text"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:maxLength="100"
+        android:hint="Mettre un email"></EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="sendMAil"
+        android:text="Envoyer la note par mail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
+        tools:ignore="OnClick" />
+
 </LinearLayout>
