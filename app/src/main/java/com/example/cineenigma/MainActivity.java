@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.example.cineenigma.data.ColTableNote;
 import com.example.cineenigma.data.TableNoteBdHelper;
+import com.example.cineenigma.firebase.FireStore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // initalise la connexion fireStore
+       FireStore.getInstance().initConnxeion();
 
         final RecyclerView listNoteRecyclerView;
 

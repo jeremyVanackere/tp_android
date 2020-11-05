@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "357971412885",
+    "firebase_url": "https://cineenig-fbffb.firebaseio.com",
+    "project_id": "cineenig-fbffb",
+    "storage_bucket": "cineenig-fbffb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357971412885:android:30ba749755c88e11df189c",
+        "android_client_info": {
+          "package_name": "com.example.cineenigma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357971412885-mu7mmc20tm86s2tgvtvtg9ao04dhtcfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX2Al-zy6g_ShhhfnhPjLMH0jtjjYx87Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357971412885-mu7mmc20tm86s2tgvtvtg9ao04dhtcfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import com.example.cineenigma.data.ColTableNote;
 import com.example.cineenigma.data.TableNoteBdHelper;
+import com.example.cineenigma.firebase.FireStore;
 
 import dto.MailBodyDTO;
+import dto.NoteDto;
 
 public class AddNote extends AppCompatActivity {
 
@@ -52,7 +54,9 @@ public class AddNote extends AppCompatActivity {
     }
 
     public long saveNote() {
-        final ValueInput valueInput = getValue();
+        final NoteDto valueInput = getValue();
+
+        FireStore.getInstance().addNote(valueInput); // envoie les datas sur le store
 
         ContentValues cv = new ContentValues();
         cv.put(ColTableNote.ColTableNoteEntry.COLUMN_NOTE_TITRE_FILM, valueInput.titre);
@@ -64,8 +68,8 @@ public class AddNote extends AppCompatActivity {
         return mDb.insert(ColTableNote.ColTableNoteEntry.TABLE_NAME, null, cv);
     }
 
-    public ValueInput getValue() {
-        final ValueInput valueInput = new ValueInput();
+    public NoteDto getValue() {
+        final NoteDto valueInput = new NoteDto();
         valueInput.titre = mTitreEditText.getText().toString();
         valueInput.note_senario = Integer.parseInt(mNoteSenarioEditText.getText().toString());
         valueInput.note_realisation = Integer.parseInt(mNoteRealisationEditText.getText().toString());
@@ -86,7 +90,7 @@ public class AddNote extends AppCompatActivity {
             return;
         }
 
-        final ValueInput valueInput = getValue();
+        final NoteDto valueInput = getValue();
 
         final MailBodyDTO mailBodyDTO = new MailBodyDTO();
         final StringBuilder bodyText = new StringBuilder();
@@ -122,13 +126,5 @@ public class AddNote extends AppCompatActivity {
         super.onDestroy();
         mDb.close();
         finish(); // etre sur que ca kill l'activité
-    }
-
-    private class ValueInput {
-        String titre;
-        int note_senario;
-        int note_realisation;
-        int note_musique;
-        String commentaire;
     }
 }
