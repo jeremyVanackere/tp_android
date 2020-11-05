@@ -35,6 +35,17 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
         tools:ignore="OnClick" />
 
+    <Button
+        android:id="@+id/data_fireStore_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="goToDataFireStore"
+        android:text="voir data du cloud firestore"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
+        tools:ignore="OnClick" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_notes_list_view"
         android:layout_width="match_parent"

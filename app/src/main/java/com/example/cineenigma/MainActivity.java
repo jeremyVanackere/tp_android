@@ -92,4 +92,10 @@ public class MainActivity extends AppCompatActivity {
     public SQLiteDatabase getmDb() {
         return mDb;
     }
+
+    public void goToDataFireStore(View view) {
+        mDb.close();
+        final Intent intent = new Intent(this, DataFireStore.class);
+        startActivity(intent);
+    }
 }

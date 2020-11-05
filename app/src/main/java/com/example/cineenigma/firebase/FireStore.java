@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.cineenigma.DataFireStore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -15,7 +16,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import dto.NoteDto;
@@ -56,7 +59,7 @@ public class FireStore {
      */
     public void addNote(final NoteDto noteDto) {
         Map<String, Object> note = new HashMap<>();
-        note.put("Titre", noteDto.titre);
+        note.put("titre", noteDto.titre);
         note.put("note_senario", noteDto.note_senario);
         note.put("note_realisation", noteDto.note_realisation);
         note.put("note_musique", noteDto.note_musique);
@@ -79,18 +82,21 @@ public class FireStore {
                 });
     }
 
-    public void getNotes() {
-        db.collection("users")
+    public void getNotes(final DataFireStore dataFireStore) {
+        db.collection("notes")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            final List<NoteDto> noteDtoList = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
+                                final NoteDto noteDto = document.toObject(NoteDto.class);
+                                noteDtoList.add(noteDto);
                             }
+                            dataFireStore.callbackData(noteDtoList);
                         } else {
-
+                            Toast.makeText(dataFireStore, "Echec recupération des données", Toast.LENGTH_SHORT);
                         }
                     }
                 });
